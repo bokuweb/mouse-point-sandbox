@@ -1,7 +1,4 @@
 (() => {
-  // const listener = (e) => console.dir(e.target);
-  // document.addEventListener('mouseover' , listener, false);
-
   const elementInfo = {};
 
   const getXpathByElementNode = node => {
@@ -30,10 +27,7 @@
     return `${stack.join('/')}`;
   };
 
-  const getMouseXYInElement = e => {
-    if (!e) {
-      e = window.event;
-    }
+  const getMouseXYInElement = (e = window.event) => {
     if (e.targetTouches) {
       const { target, targetTouches } = e;
       return {
@@ -51,11 +45,16 @@
     const elements = document.querySelectorAll('*');
     for (let i = 0; i < elements.length; i++) {
       const xpath = getXpathByElementNode(elements[i]);
+      // For test
+      // it is unnnessesary to implement capture server logic
+      const position = window.getComputedStyle(elements[i], null).getPropertyValue("position");
+      console.log(position)
       elementInfo[xpath] = {
         width: elements[i].offsetWidth,
         height: elements[i].offsetHeight,
-        top: elements[i].getBoundingClientRect().top,
-        left: elements[i].getBoundingClientRect().left,
+        // Support scroll
+        top: elements[i].getBoundingClientRect().top + (position === 'fixed' ? 0 : window.pageYOffset),
+        left: elements[i].getBoundingClientRect().left + (position === 'fixed' ? 0 :  window.pageXOffset),
       };
     }
   };
