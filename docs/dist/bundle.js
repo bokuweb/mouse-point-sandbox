@@ -149,7 +149,8 @@ var _xpathDom = require('xpath-dom');
   };
 
   window.addEventListener('click', function (e) {
-    console.time('xpath');
+    // console.time('xpath');
+    alert('foo');
     var el = document.elementFromPoint(e.clientX, e.clientY);
 
     var _getMouseXYInElement = getMouseXYInElement(e, el);
@@ -158,10 +159,10 @@ var _xpathDom = require('xpath-dom');
     var y = _getMouseXYInElement.y;
 
     var xpath = (0, _xpathDom.getXPath)(el);
-    console.timeEnd('xpath');
-    console.log('y', y);
-    console.log('height', el.offsetHeight);
-    console.log(xpath, x / el.offsetWidth, y / el.offsetHeight);
+    // console.timeEnd('xpath');
+    // console.log('y',y)
+    // console.log('height', el.offsetHeight)
+    // console.log(xpath, x / el.offsetWidth, y / el.offsetHeight);
     renderPoint(xpath, x / el.offsetWidth, y / el.offsetHeight);
   });
 })();

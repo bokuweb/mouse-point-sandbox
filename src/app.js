@@ -69,14 +69,15 @@ import { getXPath } from 'xpath-dom';
   };
 
   window.addEventListener('click', e => {
-    console.time('xpath');
+    // console.time('xpath');
+    alert('foo');
     const el = document.elementFromPoint(e.clientX, e.clientY);
     const { x, y } = getMouseXYInElement(e, el);
     const xpath = getXPath(el);
-    console.timeEnd('xpath');
-    console.log('y',y)
-    console.log('height', el.offsetHeight)
-    console.log(xpath, x / el.offsetWidth, y / el.offsetHeight);
+    // console.timeEnd('xpath');
+    // console.log('y',y)
+    // console.log('height', el.offsetHeight)
+    // console.log(xpath, x / el.offsetWidth, y / el.offsetHeight);
     renderPoint(xpath, x / el.offsetWidth, y / el.offsetHeight);
   });
 })();
