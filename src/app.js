@@ -1,31 +1,7 @@
+import { getXPath } from 'xpath-dom';
+
 (() => {
   const elementInfo = {};
-
-  const getXpathByElementNode = node => {
-    let n = node;
-    if (n instanceof Array) n = node[0];
-    if (n.nodeType !== 1) {
-      // throw new Error(`type: ${node.nodeType} name: ${node.nodeName}`);
-    }
-    const stack = [];
-    while (n !== null && n.nodeName !== '#document') {
-      let count = 0;
-      let point = 1;
-      let name = n.nodeName.toLowerCase();
-      if (n.parentNode.children.length > 1) {
-        for (let i = 0; i < n.parentNode.children.length; i++) {
-          if (n.nodeName === n.parentNode.children[i].nodeName) {
-            count++;
-            if (n === n.parentNode.children[i]) point = count;
-          }
-        }
-      }
-      name += `[${point}]`;
-      stack.unshift(name);
-      n = n.parentNode;
-    }
-    return `${stack.join('/')}`;
-  };
 
   const getMouseXYInElement = (e = window.event, el) => {
     // if (e.targetTouches) {
@@ -49,7 +25,7 @@
   const updateElementsInfo = () => {
     const elements = document.querySelectorAll('*');
     for (let i = 0; i < elements.length; i++) {
-      const xpath = getXpathByElementNode(elements[i]);
+      const xpath = getXPath(elements[i]);
       // For test
       // it is unnnessesary to implement capture server logic
       const position = window.getComputedStyle(elements[i], null).getPropertyValue("position");
@@ -83,7 +59,7 @@
     div.style.left = `${absX - 5}px`;
     div.style.width = '10px';
     div.style.height = '10px';
-    div.style.backgroundColor = '#fff';
+    div.style.backgroundColor = 'white';
     div.style.borderRadius = '50%';
     div.style.zIndex = 999999;
     document.body.appendChild(div);
@@ -93,7 +69,7 @@
     console.time('xpath');
     const el = document.elementFromPoint(e.clientX, e.clientY);
     const { x, y } = getMouseXYInElement(e, el);
-    const xpath = getXpathByElementNode(el);
+    const xpath = getXPath(el);
     console.timeEnd('xpath');
     console.log('y',y)
     console.log('height', el.offsetHeight)
