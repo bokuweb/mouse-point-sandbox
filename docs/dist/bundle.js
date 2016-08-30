@@ -104,7 +104,10 @@ var _xpathDom = require('xpath-dom');
 
   var updateElementsInfo = function updateElementsInfo() {
     var elements = document.querySelectorAll('*');
+    var ng = ['HEAD', 'META', 'TITLE', 'LINK', 'STYLE', 'SCRIPT'];
     for (var i = 0; i < elements.length; i++) {
+      if (ng.indexOf(elements[i].tagName) !== -1) continue;
+      console.log(elements[i].tagName);
       var xpath = (0, _xpathDom.getXPath)(elements[i]);
       // For test
       // it is unnnessesary to implement capture server logic

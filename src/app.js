@@ -24,7 +24,10 @@ import { getXPath } from 'xpath-dom';
 
   const updateElementsInfo = () => {
     const elements = document.querySelectorAll('*');
+    const ng = ['HEAD', 'META', 'TITLE', 'LINK', 'STYLE', 'SCRIPT'];
     for (let i = 0; i < elements.length; i++) {
+      if (ng.indexOf(elements[i].tagName) !== -1) continue;
+      console.log(elements[i].tagName)
       const xpath = getXPath(elements[i]);
       // For test
       // it is unnnessesary to implement capture server logic
