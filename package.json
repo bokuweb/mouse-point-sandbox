@@ -1,0 +1,39 @@
+{
+  "name": "mouse-point-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node server.js",
+    "build": "babel -d static/dist/ src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bokuweb/mouse-point-sandbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bokuweb/mouse-point-sandbox/issues"
+  },
+  "homepage": "https://github.com/bokuweb/mouse-point-sandbox#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015-ie": "^6.6.2",
+    "babel-preset-stage-2": "^6.13.0",
+    "connect": "^3.4.1",
+    "power-assert": "^1.4.1",
+    "selenium-standalone": "^5.6.2",
+    "serve-static": "^1.11.1",
+    "wdio": "^0.3.3",
+    "wdio-firefox-profile-service": "0.0.1",
+    "wdio-mocha-framework": "^0.4.0",
+    "wdio-phantomjs-service": "^0.1.0",
+    "wdio-sauce-service": "^0.2.4",
+    "wdio-selenium-standalone-service": "0.0.6",
+    "wdio-testingbot-service": "^0.1.6",
+    "webdriverio": "^4.2.8"
+  }
+}
