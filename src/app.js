@@ -68,7 +68,8 @@ import { getXPath } from 'xpath-dom';
     document.body.appendChild(div);
   };
 
-  window.addEventListener('click', e => {
+  document.body.style.cursor = 'pointer';
+  document.body.addEventListener('click', e => {
     // console.time('xpath');
     alert('foo');
     const el = document.elementFromPoint(e.clientX, e.clientY);
