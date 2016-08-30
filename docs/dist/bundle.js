@@ -148,7 +148,7 @@ var _xpathDom = require('xpath-dom');
     document.body.appendChild(div);
   };
 
-  document.addEventListener('mousedown', function (e) {
+  document.addEventListener('click', function (e) {
     console.time('xpath');
     var el = document.elementFromPoint(e.clientX, e.clientY);
 

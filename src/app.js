@@ -68,7 +68,7 @@ import { getXPath } from 'xpath-dom';
     document.body.appendChild(div);
   };
 
-  document.addEventListener('mousedown', e => {
+  document.addEventListener('click', e => {
     console.time('xpath');
     const el = document.elementFromPoint(e.clientX, e.clientY);
     const { x, y } = getMouseXYInElement(e, el);
